@@ -1,0 +1,293 @@
+/* ===================================================
+   Clothes Market — style.css
+   Tambahan kustom di luar utilitas Tailwind
+   =================================================== */
+
+/* ---------- Scrollbar tersembunyi untuk kategori ---------- */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ---------- Transisi global halus ---------- */
+* { box-sizing: border-box; }
+
+/* ---------- Category Button State ---------- */
+.category-btn {
+  color: #8B0000;
+  border-color: #8B0000;
+  background: #fff;
+}
+.category-btn:hover {
+  background: #8B0000;
+  color: #fff;
+}
+.category-btn.active {
+  background: #8B0000;
+  color: #fff;
+  border-color: #8B0000;
+}
+
+/* ---------- Product Card ---------- */
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(139, 0, 0, 0.12);
+}
+
+/* ---------- Gambar produk (placeholder SVG background) ---------- */
+.product-img-wrap {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.product-img-wrap .placeholder-icon {
+  color: #d1d5db;
+}
+
+/* ---------- Badge Stok ---------- */
+.badge-preorder {
+  background: #F5C518;
+  color: #5C0000;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+.badge-habis {
+  background: #ef4444;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+.badge-tersedia {
+  background: #22c55e;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 999px;
+}
+
+/* ---------- Varian Warna ---------- */
+.color-swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #e5e7eb;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.color-swatch:hover, .color-swatch.selected {
+  transform: scale(1.2);
+  border-color: #8B0000;
+}
+
+/* ---------- Varian Ukuran ---------- */
+.size-btn {
+  min-width: 40px;
+  padding: 4px 10px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #fff;
+  color: #374151;
+  transition: all 0.15s;
+}
+.size-btn:hover:not(:disabled), .size-btn.selected {
+  background: #8B0000;
+  color: #fff;
+  border-color: #8B0000;
+}
+.size-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+/* ---------- Cart Item ---------- */
+.cart-item {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 14px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* ---------- Order Status Badge ---------- */
+.status-pengemasan  { background: #fef9c3; color: #854d0e; }
+.status-pengiriman  { background: #dbeafe; color: #1e40af; }
+.status-sampai      { background: #dcfce7; color: #15803d; }
+.status-preorder    { background: #fce7f3; color: #9d174d; }
+.status-dibatalkan  { background: #fee2e2; color: #991b1b; }
+
+.order-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+/* ---------- Payment Method Radio ---------- */
+.payment-opt {
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.payment-opt.selected {
+  border-color: #8B0000;
+  background: #fff5f5;
+}
+.payment-opt input[type="radio"] { accent-color: #8B0000; }
+
+/* ---------- Auth overlay animation ---------- */
+#authOverlay {
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---------- Toast notification ---------- */
+#toast {
+  transition: opacity 0.3s ease;
+}
+
+/* ---------- Overlay cart/detail smooth fade ---------- */
+.view-section {
+  animation: slideFadeIn 0.25s ease;
+}
+@keyframes slideFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Qty stepper ---------- */
+.qty-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1.5px solid #d1d5db;
+  background: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+.qty-btn:hover { background: #f3f4f6; }
+
+/* ---------- Sticky bottom bar (checkout) ---------- */
+.sticky-bottom-bar {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  padding: 12px 0;
+  margin-top: 16px;
+}
+
+/* ---------- Mobile responsive tweaks ---------- */
+@media (max-width: 480px) {
+  .product-card .product-title { font-size: 12px; }
+}
+
+/* ---------- Navbar Inline Label on Hover ---------- */
+/*
+  Label muncul di sebelah kiri ikon saat hover,
+  mendorong ikon-ikon lain ke kiri (efek expand inline).
+  Label berada SEBELUM ikon di dalam flex wrapper.
+*/
+.nav-tooltip-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.nav-tooltip {
+  display: inline-block;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #F5C518;           /* accent — terlihat di atas bg merah */
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0;
+  /* sisi kanan label → ikon ada di kanannya */
+  margin-right: 0;
+  transition:
+    max-width 0.25s ease,
+    opacity   0.2s ease,
+    margin-right 0.25s ease;
+}
+.nav-tooltip-wrap:hover .nav-tooltip {
+  max-width: 110px;         /* cukup untuk teks terpanjang */
+  opacity: 1;
+  margin-right: 5px;        /* jarak kecil antara label dan ikon */
+}
+
+/* ---------- Star Rating ---------- */
+.star-rating {
+  display: inline-flex;
+  gap: 1px;
+  align-items: center;
+}
+.star-rating .star {
+  font-size: 13px;
+  line-height: 1;
+  color: #d1d5db; /* kosong */
+}
+.star-rating .star.filled  { color: #F5C518; }
+.star-rating .star.half    { color: #F5C518; opacity: 0.55; }
+
+/* Star rating interaktif (modal) */
+.star-input-wrap {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.star-input-wrap .star-input {
+  font-size: 32px;
+  cursor: pointer;
+  color: #d1d5db;
+  transition: color 0.1s, transform 0.1s;
+  line-height: 1;
+}
+.star-input-wrap .star-input.active,
+.star-input-wrap .star-input:hover {
+  color: #F5C518;
+  transform: scale(1.15);
+}
+
+/* Rating modal backdrop show helper */
+#ratingModal.show {
+  display: flex !important;
+}
